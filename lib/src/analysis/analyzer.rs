@@ -16,6 +16,7 @@ use super::{
     incomplete_sib::IncompleteSibAnalyzer, information_element::InformationElement,
     nas_null_cipher::NasNullCipherAnalyzer, no_nas_messages::NoNasMessagesAnalyzer,
     null_cipher::NullCipherAnalyzer, priority_2g_downgrade::LteSib6And7DowngradeAnalyzer,
+    markov_entropy::MarkovRrcEntropyAnalyzer,
     test_analyzer::TestAnalyzer,
 };
 
@@ -56,6 +57,7 @@ fn all_analyzers(
             boxed(NoNasMessagesAnalyzer::new()),
         ),
         (DiagnosticAnalyzer::metadata(), boxed(DiagnosticAnalyzer {})),
+        (MarkovRrcEntropyAnalyzer::metadata(), boxed(MarkovRrcEntropyAnalyzer::new())),
     ]
     .into_iter()
 }
